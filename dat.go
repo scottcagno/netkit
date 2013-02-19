@@ -86,7 +86,7 @@ func (self *DataWrapper) Return(v ...interface{}) interface{} {
 
 // delete
 func (self *DataWrapper) Delete(v ...interface{}) interface{} {
-	info, err := self.C.RemoveAll(v)
+	info, err := self.C.RemoveAll(v[0])
 	if err != nil {
 		return err
 	}
