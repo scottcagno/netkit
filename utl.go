@@ -1,7 +1,7 @@
 package netkit
 
 import (
-	"base64"
+	"encoding/base64"
 	"crypto/rand"
 	"encoding/hex"
 	"encoding/json"
