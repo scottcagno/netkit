@@ -1,8 +1,10 @@
 package netkit
 
 import (
-	"encoding/json"
+	"base64"
+	"crypto/rand"
 	"encoding/hex"
+	"encoding/json"
 )
 
 // map type
@@ -40,4 +42,13 @@ func DecodeJSON(s string, v interface{}) {
 func Marshal(v1, v2 interface{}) {
 	dat, _ := json.Marshal(v1)
 	json.Unmarshal(dat, &v2)
+}
+
+// random id generator
+func RandomId() string {
+	e := make([]byte, 32)
+	rand.Read(e)
+	b := make([]byte, base64.URLEncoding.EncodedLen(len(e)))
+	base64.URLEncoding.Encode(b, e)
+	return string(b)
 }
