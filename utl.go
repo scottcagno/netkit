@@ -52,3 +52,22 @@ func RandomId() string {
 	base64.URLEncoding.Encode(b, e)
 	return string(b)
 }
+
+// url encode a string
+func URLEncode(s string) string {
+	encoder := base64.URLEncoding
+	encoded := make([]byte, encoder.EncodedLen(len([]byte(s))))
+	encoder.Encode(encoded, []byte(s))
+	return string(encoded)
+}
+
+// url decode a string
+func URLDecode(s string) string {
+	encoder := base64.URLEncoding
+	decoded := make([]byte, encoder.EncodedLen(len([]byte(s))))
+	_, err := encoder.Decode(decoded, []byte(s))
+	if err != nil {
+		return fmt.Sprintln(err)
+	}
+	return string(decoded)
+}
